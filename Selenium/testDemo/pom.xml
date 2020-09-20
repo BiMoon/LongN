@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>ForDemo</groupId>
+    <artifactId>Selenium</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>testDemo</artifactId>
+  <dependencies>
+        <dependency>
+        	<groupId>ForDemo</groupId>
+        	<artifactId>framework</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        
+        <dependency>
+        	<groupId>ForDemo</groupId>
+        	<artifactId>page-objects</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        
+        <dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+			 <dependency>
+            <groupId>org.jboss.arquillian.selenium</groupId>
+            <artifactId>selenium-bom</artifactId>
+            <version>${version.selenium}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+	
+	 	<dependency>
+		    <groupId>org.jboss.arquillian.junit</groupId>
+		    <artifactId>arquillian-junit-standalone</artifactId>
+		    <version>1.6.0.Final</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		
+		  <groupId>org.jboss.arquillian</groupId>
+		  <artifactId>arquillian-bom</artifactId>
+		  <version>1.4.0.Final</version>
+		  <type>pom</type>
+		  <scope>import</scope>
+		</dependency>
+
+    
+	    <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-drone-bom</artifactId>
+            <version>2.5.1</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        
+        <dependency>
+    		<groupId>org.jboss.arquillian.graphene</groupId>
+    		<artifactId>graphene-webdriver</artifactId>
+    		<version>2.3.2</version>
+    		<type>pom</type>
+    		<scope>test</scope>
+		</dependency>
+  </dependencies>
+  <properties>
+    <version.selenium>3.13.0</version.selenium>
+</properties>
+<profiles>
+    <profile>
+       <id>firefox</id>
+       <properties>
+          <browser>firefox</browser>
+       </properties>
+    </profile>
+    <profile>
+       <id>chrome</id>
+       <properties>
+           <browser>chrome</browser>
+       </properties>
+    </profile>
+
+    <profile>
+       <id>edge</id>
+       <properties>
+           <browser>edge</browser>
+       </properties>
+    </profile>
+</profiles>
+<build>
+    <!-- clip -->
+    <!-- test resource filtering evaluates ${browser} expression in arquillian.xml -->
+    <testResources>
+        <testResource>
+            <directory>src/test/resources</directory>
+            <filtering>true</filtering>
+        </testResource>
+    </testResources>
+    <!-- clip -->
+</build>
+</project>
