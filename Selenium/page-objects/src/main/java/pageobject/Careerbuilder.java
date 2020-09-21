@@ -22,8 +22,7 @@ public class Careerbuilder extends BasePage{
 	
 	@FindBy(linkText = "Sign up") //link to open register form
 	private WebElement reg_link_en; 
-	
-	
+
 	@FindBy(linkText = "Đăng nhập") //Login button
 	private WebElement login;
 	
@@ -65,18 +64,19 @@ public class Careerbuilder extends BasePage{
 	private WebElement my_empl; //My Employers
 
 	
-	
 	String fname_send = "lucky";
 	String lname_send = "lucky";
 	String email_send = "lucky4.com@homeabc.com";
 	String pass_send = "123456789";
 	
-		public Careerbuilder(WebDriver driver) throws Exception {
+	public Careerbuilder(WebDriver driver) throws Exception {
 			
         super(driver);
         
         //PageFactory.initElements(BaseTest.getDriver(driver), this);
-        System.out.print("Here pageobject called: Test Careerbuilder Page" + "\n");    }
+        System.out.print("Here pageobject called: Test Careerbuilder Page" + "\n");    
+        }
+	
 	
 	public Boolean login() {
 		Boolean result;
@@ -89,17 +89,24 @@ public class Careerbuilder extends BasePage{
 		login_bt.click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		
-		try {
+		try 
+		{
 			driver.findElement(By.className("hassuser"));
 			System.out.print(" đăng nhập thành công" + "\n");
 			result = true;
 			
-		} catch (NoSuchElementException e) {
+		} 
+		
+		catch (NoSuchElementException e) 
+		{
 		    System.out.print("Không thể đăng nhập" + "\n");
-		    result = false;		    }
+		    result = false;		    
+		}
 
 		return result;
 	}
+	
+	
 	public Boolean login_en() {
 		Boolean result;
 		WebDriverWait wait = new WebDriverWait(driver, 15, 100);
@@ -111,18 +118,24 @@ public class Careerbuilder extends BasePage{
 		login_bt.click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		
-		try {
+		try 
+		{
 			driver.findElement(By.className("hassuser"));
 			System.out.print(" đăng nhập thành công" + "\n");
 			result = true;
 			
-		} catch (NoSuchElementException e) {
+		}
+		
+		catch (NoSuchElementException e) 
+		{
 		    System.out.print("Không thể đăng nhập" + "\n");
-		    result = false;		    }
+		    result = false;		    
+		}
 
 		return result;
 	}
 
+	
 	public Boolean dashboard_en() throws Exception {
 		Boolean result = false, loginOk;
 				
@@ -151,23 +164,33 @@ public class Careerbuilder extends BasePage{
 		WebDriverWait wait = new WebDriverWait(driver, 5, 100);
 		wait.until(ExpectedConditions.elementToBeClickable(reg_link));
 		reg_link.click();
+		
 		fname.sendKeys(fname_send);
 		lname.sendKeys(lname_send);
 		email.sendKeys(email_send);
 		pass_reg.sendKeys(pass_send);
 		pass_confirm.sendKeys(pass_send);
 		reg_bt.click();
+		
 		//verify đăng ký thành công
+		
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		try {
+		
+		try 
+		{
+			
 			driver.findElement(By.className("hassuser"));
 			System.out.print(" đăng ký thành công" + "\n");
 			result = true;
 			
-		} catch (NoSuchElementException e) {
+		} 
+		catch (NoSuchElementException e) 
+		
+		{
 		    System.out.print(email_send +" đã đăng ký" + "\n");
 		    result = false;
-		    }
+		}
+		
 		return result;
 	}
 
