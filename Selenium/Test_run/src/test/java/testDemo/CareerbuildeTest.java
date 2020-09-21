@@ -1,10 +1,11 @@
 package testDemo;
 import framework.core.BaseTest;
 import pageobject.Careerbuilder;
-import static org.junit.Assert.*;
-import org.junit.*;
+import static org.testng.Assert.*;
+//import org.junit.*;
 import TestDemo.ReadTC;
 import TestDemo.basicFunc;
+import org.testng.*;
 
 public class CareerbuildeTest extends BaseTest{
 	static String url = "https://careerbuilder.vn/";
